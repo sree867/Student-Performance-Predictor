@@ -1,0 +1,31 @@
+# Student Performance Predictor using simple AI logic (No sklearn required)
+
+# Step 1: Input sample student data
+students = [
+    {"Name": "Aarav", "Attendance": 85, "StudyHours": 10, "InternalMarks": 80},
+    {"Name": "Bhuvana", "Attendance": 60, "StudyHours": 5, "InternalMarks": 50},
+    {"Name": "Chitra", "Attendance": 75, "StudyHours": 8, "InternalMarks": 65},
+    {"Name": "Dinesh", "Attendance": 45, "StudyHours": 2, "InternalMarks": 35},
+    {"Name": "Esha", "Attendance": 95, "StudyHours": 14, "InternalMarks": 90}
+]
+
+# Step 2: Define a simple AI logic (rule-based)
+def predict_performance(attendance, hours, marks):
+    score = (0.4 * attendance) + (0.3 * hours * 10) + (0.3 * marks)
+    if score >= 600:
+        return "Excellent"
+    elif score >= 500:
+        return "Good"
+    elif score >= 400:
+        return "Average"
+    else:
+        return "Needs Improvement"
+
+# Step 3: Predict and display results
+print("STUDENT PERFORMANCE PREDICTION\n")
+print("{:<10} {:<12} {:<12} {:<12} {:<20}".format("Name", "Attendance", "StudyHours", "Marks", "Predicted Performance"))
+print("-"*70)
+
+for s in students:
+    result = predict_performance(s["Attendance"], s["StudyHours"], s["InternalMarks"])
+    print("{:<10} {:<12} {:<12} {:<12} {:<20}".format(s["Name"], s["Attendance"], s["StudyHours"], s["InternalMarks"], result))
